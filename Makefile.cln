@@ -1,0 +1,265 @@
+# 
+# Copyright (c) 1995 The Regents of the University of California.
+# All rights reserved.
+# 
+# Permission to use, copy, modify, and distribute this software and its
+# documentation for any purpose, without fee, and without written agreement is
+# hereby granted, provided that the above copyright notice and the following
+# two paragraphs appear in all copies of this software.
+# 
+# IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
+# DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
+# OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF
+# CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+# INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+# AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+# ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
+# PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+# 
+
+#  
+#  $Header: /n/video/199/eyhung/encode/RCS/Makefile,v 1.7 1995/02/02 02:25:51 eyhung Exp $
+# 
+
+##############################################################################
+#
+# Configurable items
+#
+
+################################################################
+# PROFILING # use -pg or -p if and only if you want to profile #
+################################################################
+PROFLAG =
+
+##############
+# JPEG STUFF #
+##############
+JPEG_LIB = jpeg/libjpeg.a
+JPEG_DIR = -Ijpeg
+JPEG_LIB_DIR = -Ljpeg
+MP_JPEG_OBJS = jpeg.o
+MP_JPEG_SRCS = jpeg.c
+
+####################################################################
+# DEBUGGING # use -g if and only if you want to debug, else use -O #
+####################################################################
+#DEBUGFLAG = -g 
+DEBUGFLAG = -O
+
+###############################################################################
+# MISSING PROTOTYES # use -DMISSING_PROTOS if your standard headers are wrong #
+###############################################################################
+PROTOFLAG = 
+#PROTOFLAG = -DMISSING_PROTOS
+
+#################
+# INCLUDE FILES # 
+#################
+INCLUDEDIR = -Iheaders -I/usr/include $(JPEG_DIR)
+
+############################################################################
+# LIBRARIES # specify library directories; need jpg lib and maybe pbm	   #
+############################################################################
+#LIBDIRS = -L$(PBMLIBDIR) $(JPEG_LIB_DIR)
+LIBDIRS = $(JPEG_LIB_DIR)
+
+#####################################################################
+# COMPILER # specify compiler; should be ANSI-compliant if possible #
+#####################################################################
+CC = gcc
+
+################################################
+# MAKE # command to use for the "make" command #
+################################################
+MAKE = make
+
+###################################################
+# COMPILER FLAGS # modify for different compilers #
+###################################################
+# use -DLONG_32 iff
+#	1) long's are 32 bits and
+#	2) int's are not
+#
+# if you don't have <netinet/in.h> then you must define one of the following
+#     -DFORCE_BIG_ENDIAN
+#     -DFORCE_LITTLE_ENDIAN
+#
+# if you are using a non-ANSI compiler, then use:
+#	-DNON_ANSI_COMPILER
+#
+# one other option:
+#	-DHEINOUS_DEBUG_MODE
+#
+# listed below are some suggested CFLAG lines for various compilers
+# 
+
+#	gcc
+CFLAGS	      =  $(INCLUDEDIR) $(DEBUGFLAG) -Wall -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG)
+
+#	gcc-strict
+#CFLAGS	      =  $(INCLUDEDIR) $(DEBUGFLAG) -pedantic -Wall -Waggregate-return -Wtraditional -Wshadow -Wpointer-arith -Wno-parentheses -Wwrite-strings -Wconversion -Wcast-qual -Wcast-align -Wnested-externs -Wuninitialized -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG)
+
+#	SUN cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DNON_ANSI_COMPILER
+
+#	HP cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DNON_ANSI_COMPILER
+
+#	HP gcc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG)
+
+#	DEC ALPHA cc
+#CFLAGS = $(INCLUDEDIR) -Olimit 1200 $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
+
+#	DEC Ultrix gcc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) -Wall -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG) -DMIPS
+
+# 	SGI cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -cckr -DIRIX
+
+#	Intel-based SVR4.0 cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DLONG_32 -DSVR4 -DSYSV386
+
+#	Intel-based SCO Unix
+#CFLAGS =  $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -Dsco -m486
+
+# linux CFLAGS
+#CFLAGS  = $(INCLUDEDIR) -m486 -fomit-frame-pointer -ffast-math -finline-functions $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DLONG_32 -DSYSV -DLINUX
+
+#	IBM RS/6000 cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
+
+# DOS
+#CFLAGS        =  $(INCLUDEDIR) $(DEBUGFLAG) -O1 -DSYSV -DFORCE_LITTLE_ENDIAN -w-rvl -w-rch -w-eff -w-ccc -w-par -w-use -w-aus -w-pro $(PROFLAG) $(PROTOFLAG)
+
+
+#########################################################################
+# LIBRARIES # same for most machines; may need to add stuff for sockets #
+#########################################################################
+#	this works for most machines
+LIBS = $(JPEG_LIB) -lm
+
+#	Solaris
+#LIBS = $(JPEG_LIB) -lm -lsocket -lnsl
+
+#	Intel-based SVR4.0
+#LIBS = $(JPEG_LIB) -lm -lsocket -lnsl -lgen
+
+#	Intel-based SCO Unix
+#LIBS = $(JPEG_LIB) -lX11 -lsocket -lmalloc -lPW -lc_s -lm 
+
+
+###############
+# OTHER STUFF #
+###############
+#PURIFY = purify -cache-dir=/tmp
+PURIFY =
+
+#
+# End of configurable options.  Just type make and have fun.
+##############################################################################
+
+MP_BASE_OBJS = mfwddct.o postdct.o huff.o bitio.o mheaders.o
+MP_BASE_SRCS = mfwddct.c postdct.c huff.c bitio.c mheaders.c
+MP_ENCODE_OBJS = iframe.o pframe.o bframe.o psearch.o bsearch.o block.o 
+MP_ENCODE_SRCS = iframe.c pframe.c bframe.c psearch.c bsearch.c block.c 
+MP_OTHER_OBJS = mpeg.o subsample.o param.o rgbtoycc.o \
+	readframe.o combine.o jrevdct.o frame.o fsize.o frametype.o \
+	libpnmrw.o specifics.o rate.o opts.o
+MP_OTHER_SRCS = mpeg.c subsample.c param.c rgbtoycc.c \
+	readframe.c combine.c jrevdct.c frame.c fsize.c frametype.c \
+	libpnmrw.c specifics.c rate.c opts.c
+MP_PARALLEL_OBJS = parallel.o
+MP_PARALLEL_SRCS = parallel.c
+MP_ALL_SRCS = $(MP_BASE_SRCS) $(MP_OTHER_SRCS) $(MP_ENCODE_SRCS) \
+	      $(MP_PARALLEL_SRCS) $(MP_JPEG_SRCS) main.c
+MP_ALL_OBJS = $(MP_BASE_OBJS) $(MP_OTHER_OBJS) $(MP_ENCODE_OBJS) \
+	      $(MP_PARALLEL_OBJS) $(MP_JPEG_OBJS) main.o
+MP_INCLUDE = mproto.h mtypes.h huff.h bitio.h
+MP_MISC = Makefile huff.table parse_huff.pl
+
+all: mpeg_encode
+
+#########
+# TESTS #
+#########
+
+test:
+	rm -f /tmp/ts.stat
+	./mpeg_encode -stat /tmp/ts.stat ./tst/ts.param
+	csh ./tst/diffscript /tmp/ts.stat ./tst/ts.stat /tmp/ts.mpg ./tst/ts.mpg
+
+testd:
+	rm -f /tmp/tsd.stat
+	./mpeg_encode -stat /tmp/tsd.stat ./tst/tsd.param
+	csh ./tst/diffscript /tmp/tsd.stat ./tst/tsd.stat /tmp/tsd.mpg ./tst/tsd.mpg
+
+test_all: test testd
+
+############
+# BINARIES #
+############
+
+mpeg_encode: $(MP_ALL_OBJS) $(JPEG_LIB)
+	$(PURIFY) $(CC) $(CFLAGS) -o $@ $(MP_ALL_OBJS) $(LIBDIRS) $(LIBS)
+	strip mpeg_encode
+
+profile: $(MP_ALL_OBJS)
+	$(PURIFY) $(CC) -Bstatic -pg $(CFLAGS) -o $@ $(MP_ALL_OBJS) $(LIBDIRS) $(LIBS)
+
+#########
+# OTHER #
+#########
+
+# make JPEG compile itself
+jpeg/libjpeg.a:
+	(cd jpeg; $(MAKE) libjpeg.a)
+
+#
+# Perl is necessary if you want to modify the Huffman RLE encoding table.
+#
+PERL = perl
+
+# The following stuff is for the Huffman encoding tables.  It's commented-out
+# because you probably don't want to change this.  If you do, then uncommment
+# it.
+#
+# huff.h: huff.c
+#
+# huff.c: parse_huff.pl huff.table
+#	$(PERL) parse_huff.pl huff.table
+
+headers.o: headers.c
+	$(CC) $(CFLAGS) -c headers.c
+
+depend: huff.c
+	makedepend -- $(CFLAGS) -- $(MP_ALL_SRCS)
+
+wc:;		wc -l *.[ch] headers/*.h *.pl *.table
+ci:;		ci -l $(MP_ALL_SRCS) $(MP_INCLUDE) $(MP_MISC)
+tags: $(MP_ALL_SRCS)
+	ctags -t $(MP_ALL_SRCS)
+	etags -f TAGS -t $(MP_ALL_SRCS) headers/*.h
+
+new:
+	rm -f *.o core *~ gmon.out
+	$(MAKE) depend
+
+clean:
+	-rm -f *.o core *~ gmon.out
+	$(MAKE) depend
+	-$(MAKE) tags
+
+#
+# WARNING: this assumes you're using GNU indent...
+#
+indent:;	indent -T FILE -T int8 -T int16 -T int32 -T uint8 -T uint16 -T uint32  -T BitBucket -T MpegFrame -T Block -T FlatBlock $(MP_ALL_SRCS)
+
+spotless: clean	
+	rm -f huff.c huff.h *.pure.a
+	cd jpeg; $(MAKE) clean
+
+##############################################################################
+# DO NOT DELETE THIS LINE -- make depend depends on it.

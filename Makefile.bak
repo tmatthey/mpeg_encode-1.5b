@@ -1,0 +1,527 @@
+# 
+# Copyright (c) 1995 The Regents of the University of California.
+# All rights reserved.
+# 
+# Permission to use, copy, modify, and distribute this software and its
+# documentation for any purpose, without fee, and without written agreement is
+# hereby granted, provided that the above copyright notice and the following
+# two paragraphs appear in all copies of this software.
+# 
+# IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
+# DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
+# OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF
+# CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+# INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+# AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+# ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
+# PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+# 
+
+#  
+#  $Header: /n/video/199/eyhung/encode/RCS/Makefile,v 1.7 1995/02/02 02:25:51 eyhung Exp $
+# 
+
+##############################################################################
+#
+# Configurable items
+#
+
+################################################################
+# PROFILING # use -pg or -p if and only if you want to profile #
+################################################################
+PROFLAG =
+
+##############
+# JPEG STUFF #
+##############
+JPEG_LIB = -ljpeg
+JPEG_DIR = -I/opt/jpeg-6/include/
+JPEG_LIB_DIR = -L/opt/jpeg-6/lib
+MP_JPEG_OBJS = jpeg.o
+MP_JPEG_SRCS = jpeg.c
+
+####################################################################
+# DEBUGGING # use -g if and only if you want to debug, else use -O #
+####################################################################
+#DEBUGFLAG = -g 
+DEBUGFLAG = -O
+
+###############################################################################
+# MISSING PROTOTYES # use -DMISSING_PROTOS if your standard headers are wrong #
+###############################################################################
+PROTOFLAG = 
+#PROTOFLAG = -DMISSING_PROTOS
+
+#################
+# INCLUDE FILES # 
+#################
+INCLUDEDIR = -Iheaders  $(JPEG_DIR)
+
+############################################################################
+# LIBRARIES # specify library directories; need jpg lib and maybe pbm	   #
+############################################################################
+#LIBDIRS = -L$(PBMLIBDIR) $(JPEG_LIB_DIR)
+LIBDIRS = $(JPEG_LIB_DIR)
+
+#####################################################################
+# COMPILER # specify compiler; should be ANSI-compliant if possible #
+#####################################################################
+CC = cc
+
+################################################
+# MAKE # command to use for the "make" command #
+################################################
+MAKE = make
+
+###################################################
+# COMPILER FLAGS # modify for different compilers #
+###################################################
+# use -DLONG_32 iff
+#	1) long's are 32 bits and
+#	2) int's are not
+#
+# if you don't have <netinet/in.h> then you must define one of the following
+#     -DFORCE_BIG_ENDIAN
+#     -DFORCE_LITTLE_ENDIAN
+#
+# if you are using a non-ANSI compiler, then use:
+#	-DNON_ANSI_COMPILER
+#
+# one other option:
+#	-DHEINOUS_DEBUG_MODE
+#
+# listed below are some suggested CFLAG lines for various compilers
+# 
+
+#	gcc
+CFLAGS	      =  $(INCLUDEDIR) $(DEBUGFLAG) -Wall -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG)
+
+#	gcc-strict
+#CFLAGS	      =  $(INCLUDEDIR) $(DEBUGFLAG) -pedantic -Wall -Waggregate-return -Wtraditional -Wshadow -Wpointer-arith -Wno-parentheses -Wwrite-strings -Wconversion -Wcast-qual -Wcast-align -Wnested-externs -Wuninitialized -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG)
+
+#	SUN cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DNON_ANSI_COMPILER
+
+#	HP cc
+CFLAGS = -Ae $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
+
+#	HP gcc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG)
+
+#	DEC ALPHA cc
+#CFLAGS = $(INCLUDEDIR) -Olimit 1200 $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
+
+#	DEC Ultrix gcc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) -Wall -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG) -DMIPS
+
+# 	SGI cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -cckr -DIRIX
+
+#	Intel-based SVR4.0 cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DLONG_32 -DSVR4 -DSYSV386
+
+#	Intel-based SCO Unix
+#CFLAGS =  $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -Dsco -m486
+
+# linux CFLAGS
+#CFLAGS  = $(INCLUDEDIR) -m486 -fomit-frame-pointer -ffast-math -finline-functions $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DLONG_32 -DSYSV -DLINUX
+
+#	IBM RS/6000 cc
+#CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
+
+# DOS
+#CFLAGS        =  $(INCLUDEDIR) $(DEBUGFLAG) -O1 -DSYSV -DFORCE_LITTLE_ENDIAN -w-rvl -w-rch -w-eff -w-ccc -w-par -w-use -w-aus -w-pro $(PROFLAG) $(PROTOFLAG)
+
+
+#########################################################################
+# LIBRARIES # same for most machines; may need to add stuff for sockets #
+#########################################################################
+#	this works for most machines
+LIBS = $(JPEG_LIB) -lm
+
+#	Solaris
+#LIBS = $(JPEG_LIB) -lm -lsocket -lnsl
+
+#	Intel-based SVR4.0
+#LIBS = $(JPEG_LIB) -lm -lsocket -lnsl -lgen
+
+#	Intel-based SCO Unix
+#LIBS = $(JPEG_LIB) -lX11 -lsocket -lmalloc -lPW -lc_s -lm 
+
+
+###############
+# OTHER STUFF #
+###############
+#PURIFY = purify -cache-dir=/tmp
+PURIFY =
+
+#
+# End of configurable options.  Just type make and have fun.
+##############################################################################
+
+MP_BASE_OBJS = mfwddct.o postdct.o huff.o bitio.o mheaders.o
+MP_BASE_SRCS = mfwddct.c postdct.c huff.c bitio.c mheaders.c
+MP_ENCODE_OBJS = iframe.o pframe.o bframe.o psearch.o bsearch.o block.o 
+MP_ENCODE_SRCS = iframe.c pframe.c bframe.c psearch.c bsearch.c block.c 
+MP_OTHER_OBJS = mpeg.o subsample.o param.o rgbtoycc.o \
+	readframe.o combine.o jrevdct.o frame.o fsize.o frametype.o \
+	libpnmrw.o specifics.o rate.o opts.o
+MP_OTHER_SRCS = mpeg.c subsample.c param.c rgbtoycc.c \
+	readframe.c combine.c jrevdct.c frame.c fsize.c frametype.c \
+	libpnmrw.c specifics.c rate.c opts.c
+MP_PARALLEL_OBJS = parallel.o
+MP_PARALLEL_SRCS = parallel.c
+MP_ALL_SRCS = $(MP_BASE_SRCS) $(MP_OTHER_SRCS) $(MP_ENCODE_SRCS) \
+	      $(MP_PARALLEL_SRCS) $(MP_JPEG_SRCS) main.c
+MP_ALL_OBJS = $(MP_BASE_OBJS) $(MP_OTHER_OBJS) $(MP_ENCODE_OBJS) \
+	      $(MP_PARALLEL_OBJS) $(MP_JPEG_OBJS) main.o
+MP_INCLUDE = mproto.h mtypes.h huff.h bitio.h
+MP_MISC = Makefile huff.table parse_huff.pl
+
+all: mpeg_encode
+
+#########
+# TESTS #
+#########
+
+test:
+	rm -f /tmp/ts.stat
+	./mpeg_encode -stat /tmp/ts.stat ./tst/ts.param
+#
+#This is Ok if you have setenv ...
+#	csh ./tst/diffscript /tmp/ts.stat ./tst/ts.stat /tmp/ts.mpg ./tst/ts.mpg
+#Use this to see the movie ...
+#	mpeg2play /tmp/ts.mpg
+#
+
+
+testd:
+	rm -f /tmp/tsd.stat
+	./mpeg_encode -stat /tmp/tsd.stat ./tst/tsd.param
+	csh ./tst/diffscript /tmp/tsd.stat ./tst/tsd.stat /tmp/tsd.mpg ./tst/tsd.mpg
+
+test_all: test testd
+
+############
+# BINARIES #
+############
+
+mpeg_encode: $(MP_ALL_OBJS)
+	$(PURIFY) $(CC) $(CFLAGS) -o $@ $(MP_ALL_OBJS) $(LIBDIRS) $(LIBS)
+
+profile: $(MP_ALL_OBJS)
+	$(PURIFY) $(CC) -Bstatic -pg $(CFLAGS) -o $@ $(MP_ALL_OBJS) $(LIBDIRS) $(LIBS)
+
+#########
+# OTHER #
+#########
+
+# make JPEG compile itself
+#
+#jpeg/libjpeg.a:
+#	(cd jpeg; $(MAKE) libjpeg.a)
+#
+
+#
+# Perl is necessary if you want to modify the Huffman RLE encoding table.
+#
+PERL = perl
+
+# The following stuff is for the Huffman encoding tables.  It's commented-out
+# because you probably don't want to change this.  If you do, then uncommment
+# it.
+#
+# huff.h: huff.c
+#
+# huff.c: parse_huff.pl huff.table
+#	$(PERL) parse_huff.pl huff.table
+
+# Install stuff
+DESTDIR = /opt/mpeg_encode
+BINDIR  = $(DESTDIR)/bin/X11
+LIBDIR  = $(DESTDIR)/lib/X11
+MANDIR  = $(DESTDIR)/man/man1
+
+headers.o: headers.c
+	$(CC) $(CFLAGS) -c headers.c
+
+depend: huff.c
+	makedepend -- $(CFLAGS) -- $(MP_ALL_SRCS)
+
+wc:;		wc -l *.[ch] headers/*.h *.pl *.table
+ci:;		ci -l $(MP_ALL_SRCS) $(MP_INCLUDE) $(MP_MISC)
+tags: $(MP_ALL_SRCS)
+	ctags -t $(MP_ALL_SRCS)
+	ctags -f TAGS -t $(MP_ALL_SRCS) headers/*.h
+
+new:
+	rm -f *.o core *~ gmon.out
+	$(MAKE) depend
+
+clean:
+	-rm -f mpeg_encode *.o core *~ gmon.out
+	$(MAKE) depend
+	-$(MAKE) tags
+
+install: all
+	mkdir -p -m 755 $(DESTDIR) $(BINDIR) $(LIBDIR) \
+                        $(LIBDIR)/examples $(MANDIR)
+	cp mpeg_encode $(BINDIR)
+	chmod 755 $(BINDIR)/mpeg_encode
+	cp docs/mpeg_encode.1 $(MANDIR)
+	chmod 644 $(MANDIR)/mpeg_encode.1
+	cp docs/users-guide.ps $(LIBDIR)
+	chmod 644 $(LIBDIR)/users-guide.ps
+	cp examples/*.param $(LIBDIR)/examples
+	chmod 644 $(LIBDIR)/examples/*
+
+#
+# WARNING: this assumes you're using GNU indent...
+#
+indent:;	indent -T FILE -T int8 -T int16 -T int32 -T uint8 -T uint16 -T uint32  -T BitBucket -T MpegFrame -T Block -T FlatBlock $(MP_ALL_SRCS)
+
+spotless: clean	
+	rm -f huff.c huff.h *.pure.a
+	cd jpeg; $(MAKE) clean
+
+##############################################################################
+# DO NOT DELETE THIS LINE -- make depend depends on it.
+
+mfwddct.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+mfwddct.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+mfwddct.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+mfwddct.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+mfwddct.Osuf: headers/general.h headers/dct.h headers/mtypes.h headers/opts.h
+postdct.Osuf: /usr/include/assert.h /usr/include/sys/stdsyms.h headers/all.h
+postdct.Osuf: /usr/include/stdio.h /usr/include/stdlib.h /usr/include/math.h
+postdct.Osuf: /usr/include/memory.h /usr/include/string.h
+postdct.Osuf: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+postdct.Osuf: /usr/include/sys/types.h headers/ansi.h headers/general.h
+postdct.Osuf: headers/mtypes.h headers/dct.h headers/bitio.h huff.h
+postdct.Osuf: headers/postdct.h headers/opts.h
+huff.Osuf: headers/mtypes.h headers/general.h headers/dct.h headers/ansi.h
+huff.Osuf: huff.h
+bitio.Osuf: /usr/include/assert.h /usr/include/sys/stdsyms.h headers/all.h
+bitio.Osuf: /usr/include/stdio.h /usr/include/stdlib.h /usr/include/math.h
+bitio.Osuf: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
+bitio.Osuf: headers/libpnmrw.h /usr/include/malloc.h /usr/include/sys/types.h
+bitio.Osuf: headers/ansi.h headers/general.h headers/byteorder.h
+bitio.Osuf: /usr/include/netinet/in.h headers/bitio.h headers/mtypes.h
+bitio.Osuf: headers/dct.h
+mheaders.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+mheaders.Osuf: /usr/include/stdlib.h /usr/include/math.h
+mheaders.Osuf: /usr/include/memory.h /usr/include/string.h
+mheaders.Osuf: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+mheaders.Osuf: /usr/include/sys/types.h headers/ansi.h headers/general.h
+mheaders.Osuf: headers/bitio.h headers/frames.h headers/mtypes.h
+mheaders.Osuf: headers/dct.h headers/mheaders.h headers/frame.h
+mpeg.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+mpeg.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+mpeg.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+mpeg.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+mpeg.Osuf: headers/general.h /usr/include/time.h /usr/include/errno.h
+mpeg.Osuf: /usr/include/sys/errno.h /usr/include/unistd.h
+mpeg.Osuf: /usr/include/sys/unistd.h headers/mtypes.h headers/dct.h
+mpeg.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+mpeg.Osuf: headers/frame.h headers/search.h headers/mpeg.h
+mpeg.Osuf: headers/prototypes.h headers/parallel.h headers/param.h
+mpeg.Osuf: headers/readframe.h headers/fsize.h headers/rate.h
+mpeg.Osuf: /usr/include/sys/stat.h
+subsample.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+subsample.Osuf: /usr/include/stdlib.h /usr/include/math.h
+subsample.Osuf: /usr/include/memory.h /usr/include/string.h
+subsample.Osuf: /usr/include/limits.h headers/libpnmrw.h
+subsample.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+subsample.Osuf: headers/general.h headers/mtypes.h headers/dct.h
+subsample.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+subsample.Osuf: headers/frame.h headers/prototypes.h
+param.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+param.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+param.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+param.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+param.Osuf: headers/general.h headers/mtypes.h headers/dct.h headers/mpeg.h
+param.Osuf: headers/frame.h headers/search.h headers/prototypes.h
+param.Osuf: headers/parallel.h headers/bitio.h headers/param.h
+param.Osuf: headers/readframe.h headers/fsize.h headers/frames.h
+param.Osuf: headers/mheaders.h headers/jpeg.h /usr/include/ctype.h
+param.Osuf: headers/rate.h headers/opts.h
+rgbtoycc.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+rgbtoycc.Osuf: /usr/include/stdlib.h /usr/include/math.h
+rgbtoycc.Osuf: /usr/include/memory.h /usr/include/string.h
+rgbtoycc.Osuf: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+rgbtoycc.Osuf: /usr/include/sys/types.h headers/ansi.h headers/general.h
+rgbtoycc.Osuf: headers/frame.h headers/mtypes.h headers/dct.h headers/fsize.h
+rgbtoycc.Osuf: headers/rgbtoycc.h
+readframe.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+readframe.Osuf: /usr/include/stdlib.h /usr/include/math.h
+readframe.Osuf: /usr/include/memory.h /usr/include/string.h
+readframe.Osuf: /usr/include/limits.h headers/libpnmrw.h
+readframe.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+readframe.Osuf: headers/general.h /usr/include/time.h /usr/include/errno.h
+readframe.Osuf: /usr/include/sys/errno.h /usr/include/ctype.h
+readframe.Osuf: /usr/include/unistd.h /usr/include/sys/unistd.h
+readframe.Osuf: headers/mtypes.h headers/dct.h headers/frames.h
+readframe.Osuf: headers/mheaders.h headers/bitio.h headers/frame.h
+readframe.Osuf: headers/prototypes.h headers/parallel.h headers/param.h
+readframe.Osuf: headers/readframe.h headers/fsize.h headers/rgbtoycc.h
+readframe.Osuf: headers/jpeg.h headers/opts.h
+combine.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+combine.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+combine.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+combine.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+combine.Osuf: headers/general.h /usr/include/time.h /usr/include/errno.h
+combine.Osuf: /usr/include/sys/errno.h headers/mtypes.h headers/dct.h
+combine.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+combine.Osuf: headers/frame.h headers/search.h headers/mpeg.h
+combine.Osuf: headers/prototypes.h headers/parallel.h headers/param.h
+combine.Osuf: headers/readframe.h headers/fsize.h headers/combine.h
+combine.Osuf: /usr/include/unistd.h /usr/include/sys/unistd.h
+jrevdct.Osuf: /usr/include/memory.h /usr/include/string.h headers/all.h
+jrevdct.Osuf: /usr/include/stdio.h /usr/include/sys/stdsyms.h
+jrevdct.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/limits.h
+jrevdct.Osuf: headers/libpnmrw.h /usr/include/malloc.h
+jrevdct.Osuf: /usr/include/sys/types.h headers/ansi.h headers/general.h
+jrevdct.Osuf: headers/dct.h
+frame.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+frame.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+frame.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+frame.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+frame.Osuf: headers/general.h headers/mtypes.h headers/dct.h headers/frames.h
+frame.Osuf: headers/mheaders.h headers/bitio.h headers/frame.h
+frame.Osuf: headers/fsize.h
+fsize.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+fsize.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+fsize.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+fsize.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+fsize.Osuf: headers/general.h headers/fsize.h headers/dct.h
+frametype.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+frametype.Osuf: /usr/include/stdlib.h /usr/include/math.h
+frametype.Osuf: /usr/include/memory.h /usr/include/string.h
+frametype.Osuf: /usr/include/limits.h headers/libpnmrw.h
+frametype.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+frametype.Osuf: headers/general.h headers/prototypes.h headers/frame.h
+frametype.Osuf: headers/mtypes.h headers/dct.h headers/frames.h
+frametype.Osuf: headers/mheaders.h headers/bitio.h headers/param.h
+libpnmrw.Osuf: /usr/include/stdio.h /usr/include/sys/stdsyms.h
+libpnmrw.Osuf: headers/libpnmrw.h /usr/include/malloc.h
+libpnmrw.Osuf: /usr/include/sys/types.h /usr/include/string.h
+specifics.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+specifics.Osuf: /usr/include/stdlib.h /usr/include/math.h
+specifics.Osuf: /usr/include/memory.h /usr/include/string.h
+specifics.Osuf: /usr/include/limits.h headers/libpnmrw.h
+specifics.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+specifics.Osuf: headers/general.h headers/mtypes.h headers/dct.h
+specifics.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+specifics.Osuf: headers/frame.h headers/fsize.h headers/specifics.h
+specifics.Osuf: headers/prototypes.h
+rate.Osuf: /usr/include/sys/times.h /usr/include/sys/stdsyms.h headers/all.h
+rate.Osuf: /usr/include/stdio.h /usr/include/stdlib.h /usr/include/math.h
+rate.Osuf: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
+rate.Osuf: headers/libpnmrw.h /usr/include/malloc.h /usr/include/sys/types.h
+rate.Osuf: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+rate.Osuf: headers/bitio.h headers/frames.h headers/mheaders.h
+rate.Osuf: headers/frame.h headers/prototypes.h headers/param.h
+rate.Osuf: headers/fsize.h headers/postdct.h headers/mpeg.h
+rate.Osuf: headers/parallel.h headers/rate.h
+opts.Osuf: /usr/include/stdio.h /usr/include/sys/stdsyms.h
+opts.Osuf: /usr/include/string.h headers/opts.h headers/general.h
+opts.Osuf: headers/ansi.h headers/mtypes.h headers/dct.h
+opts.Osuf: /usr/include/malloc.h /usr/include/sys/types.h /usr/include/math.h
+iframe.Osuf: /usr/include/sys/times.h /usr/include/sys/stdsyms.h
+iframe.Osuf: /usr/include/sys/param.h /usr/include/sys/types.h
+iframe.Osuf: /usr/include/machine/param.h /usr/include/sys/sysmacros.h
+iframe.Osuf: /usr/include/machine/param_shm.h /usr/include/sys/time.h
+iframe.Osuf: /usr/include/sys/sigevent.h /usr/include/machine/spl.h
+iframe.Osuf: headers/all.h /usr/include/stdio.h /usr/include/stdlib.h
+iframe.Osuf: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
+iframe.Osuf: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+iframe.Osuf: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+iframe.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+iframe.Osuf: headers/frame.h headers/prototypes.h headers/mpeg.h
+iframe.Osuf: headers/param.h headers/fsize.h headers/parallel.h
+iframe.Osuf: headers/postdct.h headers/rate.h headers/opts.h
+pframe.Osuf: /usr/include/assert.h /usr/include/sys/stdsyms.h
+pframe.Osuf: /usr/include/sys/param.h /usr/include/sys/types.h
+pframe.Osuf: /usr/include/machine/param.h /usr/include/sys/sysmacros.h
+pframe.Osuf: /usr/include/machine/param_shm.h /usr/include/sys/time.h
+pframe.Osuf: /usr/include/sys/sigevent.h /usr/include/machine/spl.h
+pframe.Osuf: headers/all.h /usr/include/stdio.h /usr/include/stdlib.h
+pframe.Osuf: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
+pframe.Osuf: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+pframe.Osuf: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+pframe.Osuf: headers/bitio.h headers/frames.h headers/mheaders.h
+pframe.Osuf: headers/frame.h headers/prototypes.h headers/param.h
+pframe.Osuf: headers/fsize.h headers/postdct.h headers/mpeg.h
+pframe.Osuf: headers/parallel.h headers/rate.h headers/opts.h
+bframe.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+bframe.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+bframe.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+bframe.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+bframe.Osuf: headers/general.h /usr/include/sys/param.h
+bframe.Osuf: /usr/include/machine/param.h /usr/include/sys/sysmacros.h
+bframe.Osuf: /usr/include/machine/param_shm.h /usr/include/sys/time.h
+bframe.Osuf: /usr/include/sys/sigevent.h /usr/include/machine/spl.h
+bframe.Osuf: /usr/include/assert.h headers/mtypes.h headers/dct.h
+bframe.Osuf: headers/bitio.h headers/frames.h headers/mheaders.h
+bframe.Osuf: headers/frame.h headers/prototypes.h headers/fsize.h
+bframe.Osuf: headers/param.h headers/postdct.h headers/rate.h headers/opts.h
+psearch.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+psearch.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+psearch.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+psearch.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+psearch.Osuf: headers/general.h headers/mtypes.h headers/dct.h
+psearch.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+psearch.Osuf: headers/frame.h headers/search.h headers/prototypes.h
+psearch.Osuf: headers/fsize.h headers/param.h
+bsearch.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+bsearch.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+bsearch.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+bsearch.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+bsearch.Osuf: headers/general.h headers/mtypes.h headers/dct.h
+bsearch.Osuf: headers/frames.h headers/mheaders.h headers/bitio.h
+bsearch.Osuf: headers/frame.h headers/search.h headers/fsize.h
+block.Osuf: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
+block.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+block.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+block.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+block.Osuf: headers/general.h headers/mtypes.h headers/dct.h headers/frames.h
+block.Osuf: headers/mheaders.h headers/bitio.h headers/frame.h
+block.Osuf: headers/prototypes.h headers/fsize.h headers/opts.h
+block.Osuf: headers/postdct.h
+parallel.Osuf: /usr/include/sys/types.h /usr/include/sys/stdsyms.h
+parallel.Osuf: /usr/include/sys/socket.h /usr/include/sys/times.h
+parallel.Osuf: /usr/include/time.h /usr/include/netinet/in.h
+parallel.Osuf: /usr/include/unistd.h /usr/include/sys/unistd.h
+parallel.Osuf: /usr/include/netdb.h /usr/include/stdio.h /usr/include/errno.h
+parallel.Osuf: /usr/include/sys/errno.h /usr/include/string.h
+parallel.Osuf: /usr/include/signal.h /usr/include/sys/signal.h
+parallel.Osuf: /usr/include/sys/sigevent.h /usr/include/sys/siginfo.h
+parallel.Osuf: /usr/include/sys/newsig.h headers/all.h /usr/include/stdlib.h
+parallel.Osuf: /usr/include/math.h /usr/include/memory.h
+parallel.Osuf: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+parallel.Osuf: headers/ansi.h headers/general.h headers/param.h
+parallel.Osuf: headers/mpeg.h headers/mtypes.h headers/dct.h headers/frame.h
+parallel.Osuf: headers/prototypes.h headers/parallel.h headers/bitio.h
+parallel.Osuf: headers/readframe.h headers/fsize.h headers/combine.h
+parallel.Osuf: headers/frames.h headers/mheaders.h
+jpeg.Osuf: /usr/include/stdio.h /usr/include/sys/stdsyms.h headers/all.h
+jpeg.Osuf: /usr/include/stdlib.h /usr/include/math.h /usr/include/memory.h
+jpeg.Osuf: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+jpeg.Osuf: /usr/include/malloc.h /usr/include/sys/types.h headers/ansi.h
+jpeg.Osuf: headers/general.h headers/mtypes.h headers/dct.h headers/frames.h
+jpeg.Osuf: headers/mheaders.h headers/bitio.h headers/frame.h
+jpeg.Osuf: headers/prototypes.h headers/param.h headers/readframe.h
+jpeg.Osuf: headers/fsize.h headers/rgbtoycc.h headers/jpeg.h jpeg/jpeglib.h
+jpeg.Osuf: jpeg/jconfig.h jpeg/jmorecfg.h
+main.Osuf: /usr/include/assert.h /usr/include/sys/stdsyms.h headers/all.h
+main.Osuf: /usr/include/stdio.h /usr/include/stdlib.h /usr/include/math.h
+main.Osuf: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
+main.Osuf: headers/libpnmrw.h /usr/include/malloc.h /usr/include/sys/types.h
+main.Osuf: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+main.Osuf: headers/mpeg.h headers/frame.h headers/search.h
+main.Osuf: headers/prototypes.h headers/param.h headers/parallel.h
+main.Osuf: headers/bitio.h headers/readframe.h headers/combine.h
+main.Osuf: headers/frames.h headers/mheaders.h headers/jpeg.h
+main.Osuf: headers/specifics.h headers/opts.h /usr/include/time.h

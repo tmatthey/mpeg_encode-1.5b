@@ -1,0 +1,58 @@
+Package name:     mpeg_encode
+Version number:   1.5b
+Original author:  Kevin Gong and others <keving@cs.berkeley.edu>
+Original URL:     ftp://mm-ftp.cs.berkeley.edu/pub/multimedia/mpeg/encode/
+HP-UX URL:        http://hpux.connect.org.uk/hppd/cgi-bin/search?package=&term=mpeg_encode-
+Dependencies:     jpeg
+Install tree:     /opt/mpeg_encode
+Report bugs to:   neil@connect.org.uk
+Tested on:        HP 9000/780/C160 running HP-UX 11.00
+C compiler used:  Version A.11.01.21505.GP
+Purpose:
+Mpeg video encoder. It produces an MPEG-1 video stream from a set of input
+files. The encoder will accept any input file format as long as you provide a
+script to convert the images to PPM, YUV, JPEG, or JMOVIE format. Included is a
+postscript users guide and a number of examples.
+Date archived:    Wed  7 Feb 2001
+
+-------------------------------------------------------------------------------
+
+		The Parallel Berkeley Encoder
+	URL:http://bmrc.berkeley.edu/frame/research/mpeg/
+
+Changes:
+
+   - Makefile
+      The included jpeg library isn't compiled. The program links against
+      an already installed jpeg library. This library can be downloaded
+      from this archive as jpeg-6a.
+
+   - headers/libpnmrw.h
+      Redefinition of malloc() is now skipped.
+
+   - jpeg.c
+      Had to rename a function from jpeg_create_decompress to
+      jpeg_CreateDecompress. The original wasn't in the jpeg library.
+
+
+To build:
+
+   Edit the Makefile, changing any definitions necessary.
+   "make"
+
+
+To test:
+
+	% make test
+
+   (One part of the test fails if setenv(1) is not available)
+
+
+To install:
+
+   "make install"
+
+
+Archived:
+
+    Wed Feb 7  2001
