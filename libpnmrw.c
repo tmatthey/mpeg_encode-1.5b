@@ -10,6 +10,8 @@
  ** implied warranty.
  */
 
+#include <stdlib.h>
+#include <errno.h>
 #define pm_error(x) exit(1)
 
 
@@ -126,11 +128,7 @@ static void
   pm_perror( reason )
 char* reason;
 {
-  extern char* sys_errlist[];
-  extern int errno;
-  char* e;
-
-  e = sys_errlist[errno];
+  const char*  e = strerror(errno);
 
   if ( reason != 0 && reason[0] != '\0' )
     (void) fprintf( stderr, "%s: %s - %s\n", progname, reason, e );

@@ -20,7 +20,7 @@
 ** that point here, feel free to tweak or remove these declarations.
 */
 #include <malloc.h>
-#if !defined(sco)  &&  !defined(sgi) && !defined(IRIX) && !defined(__hpux)
+#if !defined(sco)  &&  !defined(sgi) && !defined(IRIX) && !defined(__hpux) && !defined(LINUX)
 extern char* malloc();
 #endif
 /* End of configurable definitions. */

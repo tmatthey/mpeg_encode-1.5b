@@ -1,0 +1,3 @@
+*.o
+mpeg_encode
+Makefile.bak

@@ -37,8 +37,8 @@ PROFLAG =
 # JPEG STUFF #
 ##############
 JPEG_LIB = -ljpeg
-JPEG_DIR = -I/opt/jpeg-6/include/
-JPEG_LIB_DIR = -L/opt/jpeg-6/lib
+JPEG_DIR = -I/user/include/
+JPEG_LIB_DIR = -L/usr/lib/x86_64-linux-gnu/
 MP_JPEG_OBJS = jpeg.o
 MP_JPEG_SRCS = jpeg.c
 
@@ -105,7 +105,7 @@ CFLAGS	      =  $(INCLUDEDIR) $(DEBUGFLAG) -Wall -Wmissing-prototypes $(PROFLAG)
 #CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DNON_ANSI_COMPILER
 
 #	HP cc
-CFLAGS = -Ae $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
+# CFLAGS = -Ae $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
 
 #	HP gcc
 #CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG)
@@ -126,7 +126,7 @@ CFLAGS = -Ae $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
 #CFLAGS =  $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -Dsco -m486
 
 # linux CFLAGS
-#CFLAGS  = $(INCLUDEDIR) -m486 -fomit-frame-pointer -ffast-math -finline-functions $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG) -DLONG_32 -DSYSV -DLINUX
+CFLAGS  = $(INCLUDEDIR) -fomit-frame-pointer -ffast-math -finline-functions $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)  -DSYSV -DLINUX
 
 #	IBM RS/6000 cc
 #CFLAGS = $(INCLUDEDIR) $(DEBUGFLAG) $(PROFLAG) $(PROTOFLAG)
@@ -289,290 +289,276 @@ spotless: clean
 ##############################################################################
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 
-mfwddct.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-mfwddct.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-mfwddct.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-mfwddct.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-mfwddct.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-mfwddct.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-mfwddct.o: headers/ansi.h headers/general.h headers/dct.h headers/mtypes.h
-mfwddct.o: headers/opts.h
-postdct.o: /usr/include/assert.h /usr/include/sys/stdsyms.h headers/all.h
-postdct.o: /usr/include/stdio.h /usr/include/sys/types.h
-postdct.o: /usr/include/sys/_inttypes.h /usr/include/sys/_null.h
-postdct.o: /usr/include/sys/_size_t.h /usr/include/stdlib.h
-postdct.o: /usr/include/sys/_wchar_t.h /usr/include/math.h
-postdct.o: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
-postdct.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-postdct.o: headers/general.h headers/mtypes.h headers/dct.h headers/bitio.h
-postdct.o: huff.h headers/postdct.h headers/opts.h
+mfwddct.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+mfwddct.o: /usr/include/stdc-predef.h /usr/include/libio.h
+mfwddct.o: /usr/include/_G_config.h /usr/include/wchar.h
+mfwddct.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+mfwddct.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+mfwddct.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+mfwddct.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+mfwddct.o: headers/dct.h headers/mtypes.h headers/opts.h
+postdct.o: /usr/include/assert.h /usr/include/features.h
+postdct.o: /usr/include/stdc-predef.h headers/all.h /usr/include/stdio.h
+postdct.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+postdct.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+postdct.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+postdct.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+postdct.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+postdct.o: headers/mtypes.h headers/dct.h headers/bitio.h huff.h
+postdct.o: headers/postdct.h headers/opts.h
 huff.o: headers/mtypes.h headers/general.h headers/dct.h headers/ansi.h
 huff.o: huff.h
-bitio.o: /usr/include/assert.h /usr/include/sys/stdsyms.h headers/all.h
-bitio.o: /usr/include/stdio.h /usr/include/sys/types.h
-bitio.o: /usr/include/sys/_inttypes.h /usr/include/sys/_null.h
-bitio.o: /usr/include/sys/_size_t.h /usr/include/stdlib.h
-bitio.o: /usr/include/sys/_wchar_t.h /usr/include/math.h
-bitio.o: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
-bitio.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-bitio.o: headers/general.h headers/byteorder.h /usr/include/netinet/in.h
-bitio.o: headers/bitio.h headers/mtypes.h headers/dct.h
-mheaders.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-mheaders.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-mheaders.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-mheaders.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-mheaders.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-mheaders.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-mheaders.o: headers/ansi.h headers/general.h headers/bitio.h headers/frames.h
+bitio.o: /usr/include/assert.h /usr/include/features.h
+bitio.o: /usr/include/stdc-predef.h headers/all.h /usr/include/stdio.h
+bitio.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+bitio.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+bitio.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+bitio.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+bitio.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+bitio.o: headers/byteorder.h /usr/include/netinet/in.h /usr/include/stdint.h
+bitio.o: /usr/include/endian.h headers/bitio.h headers/mtypes.h headers/dct.h
+mheaders.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+mheaders.o: /usr/include/stdc-predef.h /usr/include/libio.h
+mheaders.o: /usr/include/_G_config.h /usr/include/wchar.h
+mheaders.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+mheaders.o: /usr/include/memory.h /usr/include/string.h
+mheaders.o: /usr/include/xlocale.h /usr/include/limits.h /usr/include/time.h
+mheaders.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
+mheaders.o: headers/general.h headers/bitio.h headers/frames.h
 mheaders.o: headers/mtypes.h headers/dct.h headers/mheaders.h headers/frame.h
-mpeg.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-mpeg.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-mpeg.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-mpeg.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h /usr/include/math.h
-mpeg.o: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
-mpeg.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-mpeg.o: headers/general.h /usr/include/time.h /usr/include/sys/_time_t.h
-mpeg.o: /usr/include/errno.h /usr/include/sys/errno.h /usr/include/unistd.h
-mpeg.o: /usr/include/sys/unistd.h headers/mtypes.h headers/dct.h
-mpeg.o: headers/frames.h headers/mheaders.h headers/bitio.h headers/frame.h
-mpeg.o: headers/search.h headers/mpeg.h headers/prototypes.h
+mpeg.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+mpeg.o: /usr/include/stdc-predef.h /usr/include/libio.h
+mpeg.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+mpeg.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+mpeg.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+mpeg.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
+mpeg.o: headers/ansi.h headers/general.h /usr/include/errno.h
+mpeg.o: /usr/include/unistd.h /usr/include/getopt.h headers/mtypes.h
+mpeg.o: headers/dct.h headers/frames.h headers/mheaders.h headers/bitio.h
+mpeg.o: headers/frame.h headers/search.h headers/mpeg.h headers/prototypes.h
 mpeg.o: headers/parallel.h headers/param.h headers/readframe.h
-mpeg.o: headers/fsize.h headers/rate.h /usr/include/sys/stat.h
-subsample.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-subsample.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-subsample.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-subsample.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-subsample.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-subsample.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-subsample.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+mpeg.o: headers/fsize.h headers/rate.h
+subsample.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+subsample.o: /usr/include/stdc-predef.h /usr/include/libio.h
+subsample.o: /usr/include/_G_config.h /usr/include/wchar.h
+subsample.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+subsample.o: /usr/include/memory.h /usr/include/string.h
+subsample.o: /usr/include/xlocale.h /usr/include/limits.h /usr/include/time.h
+subsample.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
+subsample.o: headers/general.h headers/mtypes.h headers/dct.h
 subsample.o: headers/frames.h headers/mheaders.h headers/bitio.h
 subsample.o: headers/frame.h headers/prototypes.h
-param.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-param.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-param.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-param.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-param.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-param.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+param.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+param.o: /usr/include/stdc-predef.h /usr/include/libio.h
+param.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+param.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+param.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+param.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
 param.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
 param.o: headers/mpeg.h headers/frame.h headers/search.h headers/prototypes.h
 param.o: headers/parallel.h headers/bitio.h headers/param.h
 param.o: headers/readframe.h headers/fsize.h headers/frames.h
 param.o: headers/mheaders.h headers/jpeg.h /usr/include/ctype.h
-param.o: headers/rate.h headers/opts.h
-rgbtoycc.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-rgbtoycc.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-rgbtoycc.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-rgbtoycc.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-rgbtoycc.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-rgbtoycc.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-rgbtoycc.o: headers/ansi.h headers/general.h headers/frame.h headers/mtypes.h
-rgbtoycc.o: headers/dct.h headers/fsize.h headers/rgbtoycc.h
-readframe.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-readframe.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-readframe.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-readframe.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-readframe.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-readframe.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-readframe.o: headers/ansi.h headers/general.h /usr/include/time.h
-readframe.o: /usr/include/sys/_time_t.h /usr/include/errno.h
-readframe.o: /usr/include/sys/errno.h /usr/include/ctype.h
-readframe.o: /usr/include/unistd.h /usr/include/sys/unistd.h headers/mtypes.h
-readframe.o: headers/dct.h headers/frames.h headers/mheaders.h
-readframe.o: headers/bitio.h headers/frame.h headers/prototypes.h
-readframe.o: headers/parallel.h headers/param.h headers/readframe.h
-readframe.o: headers/fsize.h headers/rgbtoycc.h headers/jpeg.h headers/opts.h
-combine.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-combine.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-combine.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-combine.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-combine.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-combine.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-combine.o: headers/ansi.h headers/general.h /usr/include/time.h
-combine.o: /usr/include/sys/_time_t.h /usr/include/errno.h
-combine.o: /usr/include/sys/errno.h headers/mtypes.h headers/dct.h
+param.o: /usr/include/endian.h headers/rate.h headers/opts.h
+rgbtoycc.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+rgbtoycc.o: /usr/include/stdc-predef.h /usr/include/libio.h
+rgbtoycc.o: /usr/include/_G_config.h /usr/include/wchar.h
+rgbtoycc.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+rgbtoycc.o: /usr/include/memory.h /usr/include/string.h
+rgbtoycc.o: /usr/include/xlocale.h /usr/include/limits.h /usr/include/time.h
+rgbtoycc.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
+rgbtoycc.o: headers/general.h headers/frame.h headers/mtypes.h headers/dct.h
+rgbtoycc.o: headers/fsize.h headers/rgbtoycc.h
+readframe.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+readframe.o: /usr/include/stdc-predef.h /usr/include/libio.h
+readframe.o: /usr/include/_G_config.h /usr/include/wchar.h
+readframe.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+readframe.o: /usr/include/memory.h /usr/include/string.h
+readframe.o: /usr/include/xlocale.h /usr/include/limits.h /usr/include/time.h
+readframe.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
+readframe.o: headers/general.h /usr/include/errno.h /usr/include/ctype.h
+readframe.o: /usr/include/endian.h /usr/include/unistd.h
+readframe.o: /usr/include/getopt.h headers/mtypes.h headers/dct.h
+readframe.o: headers/frames.h headers/mheaders.h headers/bitio.h
+readframe.o: headers/frame.h headers/prototypes.h headers/parallel.h
+readframe.o: headers/param.h headers/readframe.h headers/fsize.h
+readframe.o: headers/rgbtoycc.h headers/jpeg.h headers/opts.h
+combine.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+combine.o: /usr/include/stdc-predef.h /usr/include/libio.h
+combine.o: /usr/include/_G_config.h /usr/include/wchar.h
+combine.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+combine.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+combine.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+combine.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+combine.o: /usr/include/errno.h headers/mtypes.h headers/dct.h
 combine.o: headers/frames.h headers/mheaders.h headers/bitio.h
 combine.o: headers/frame.h headers/search.h headers/mpeg.h
 combine.o: headers/prototypes.h headers/parallel.h headers/param.h
 combine.o: headers/readframe.h headers/fsize.h headers/combine.h
-combine.o: /usr/include/unistd.h /usr/include/sys/unistd.h
-jrevdct.o: /usr/include/memory.h /usr/include/string.h
-jrevdct.o: /usr/include/sys/_inttypes.h /usr/include/sys/_null.h
-jrevdct.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-jrevdct.o: /usr/include/sys/types.h /usr/include/sys/_size_t.h
-jrevdct.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-jrevdct.o: /usr/include/math.h /usr/include/limits.h headers/libpnmrw.h
+combine.o: /usr/include/unistd.h /usr/include/getopt.h
+jrevdct.o: /usr/include/memory.h /usr/include/features.h
+jrevdct.o: /usr/include/stdc-predef.h /usr/include/string.h
+jrevdct.o: /usr/include/xlocale.h headers/all.h /usr/include/stdio.h
+jrevdct.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+jrevdct.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+jrevdct.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
 jrevdct.o: /usr/include/malloc.h headers/ansi.h headers/general.h
 jrevdct.o: headers/dct.h
-frame.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-frame.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-frame.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-frame.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-frame.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-frame.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+frame.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+frame.o: /usr/include/stdc-predef.h /usr/include/libio.h
+frame.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+frame.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+frame.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+frame.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
 frame.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
 frame.o: headers/frames.h headers/mheaders.h headers/bitio.h headers/frame.h
 frame.o: headers/fsize.h
-fsize.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-fsize.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-fsize.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-fsize.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-fsize.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-fsize.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+fsize.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+fsize.o: /usr/include/stdc-predef.h /usr/include/libio.h
+fsize.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+fsize.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+fsize.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+fsize.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
 fsize.o: headers/ansi.h headers/general.h headers/fsize.h headers/dct.h
-frametype.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-frametype.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-frametype.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-frametype.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-frametype.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-frametype.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-frametype.o: headers/ansi.h headers/general.h headers/prototypes.h
-frametype.o: headers/frame.h headers/mtypes.h headers/dct.h headers/frames.h
+frametype.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+frametype.o: /usr/include/stdc-predef.h /usr/include/libio.h
+frametype.o: /usr/include/_G_config.h /usr/include/wchar.h
+frametype.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+frametype.o: /usr/include/memory.h /usr/include/string.h
+frametype.o: /usr/include/xlocale.h /usr/include/limits.h /usr/include/time.h
+frametype.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
+frametype.o: headers/general.h headers/prototypes.h headers/frame.h
+frametype.o: headers/mtypes.h headers/dct.h headers/frames.h
 frametype.o: headers/mheaders.h headers/bitio.h headers/param.h
-libpnmrw.o: /usr/include/stdio.h /usr/include/sys/stdsyms.h
-libpnmrw.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-libpnmrw.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-libpnmrw.o: headers/libpnmrw.h /usr/include/malloc.h /usr/include/string.h
-specifics.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-specifics.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-specifics.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-specifics.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-specifics.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-specifics.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-specifics.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+libpnmrw.o: /usr/include/stdlib.h /usr/include/features.h
+libpnmrw.o: /usr/include/stdc-predef.h /usr/include/alloca.h
+libpnmrw.o: /usr/include/errno.h /usr/include/stdio.h /usr/include/libio.h
+libpnmrw.o: /usr/include/_G_config.h /usr/include/wchar.h headers/libpnmrw.h
+libpnmrw.o: /usr/include/malloc.h /usr/include/string.h
+libpnmrw.o: /usr/include/xlocale.h
+specifics.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+specifics.o: /usr/include/stdc-predef.h /usr/include/libio.h
+specifics.o: /usr/include/_G_config.h /usr/include/wchar.h
+specifics.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+specifics.o: /usr/include/memory.h /usr/include/string.h
+specifics.o: /usr/include/xlocale.h /usr/include/limits.h /usr/include/time.h
+specifics.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
+specifics.o: headers/general.h headers/mtypes.h headers/dct.h
 specifics.o: headers/frames.h headers/mheaders.h headers/bitio.h
 specifics.o: headers/frame.h headers/fsize.h headers/specifics.h
 specifics.o: headers/prototypes.h
-rate.o: /usr/include/sys/times.h /usr/include/sys/stdsyms.h
-rate.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h headers/all.h
-rate.o: /usr/include/stdio.h /usr/include/sys/_null.h
-rate.o: /usr/include/sys/_size_t.h /usr/include/stdlib.h
-rate.o: /usr/include/sys/_wchar_t.h /usr/include/math.h /usr/include/memory.h
-rate.o: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
-rate.o: /usr/include/malloc.h headers/ansi.h headers/general.h
-rate.o: headers/mtypes.h headers/dct.h headers/bitio.h headers/frames.h
-rate.o: headers/mheaders.h headers/frame.h headers/prototypes.h
-rate.o: headers/param.h headers/fsize.h headers/postdct.h headers/mpeg.h
-rate.o: headers/parallel.h headers/rate.h
-opts.o: /usr/include/stdio.h /usr/include/sys/stdsyms.h
-opts.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-opts.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-opts.o: /usr/include/string.h headers/opts.h headers/general.h headers/ansi.h
-opts.o: headers/mtypes.h headers/dct.h /usr/include/malloc.h
+rate.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+rate.o: /usr/include/stdc-predef.h /usr/include/libio.h
+rate.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+rate.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+rate.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+rate.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
+rate.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+rate.o: headers/bitio.h headers/frames.h headers/mheaders.h headers/frame.h
+rate.o: headers/prototypes.h headers/param.h headers/fsize.h
+rate.o: headers/postdct.h headers/mpeg.h headers/parallel.h headers/rate.h
+opts.o: /usr/include/stdio.h /usr/include/features.h
+opts.o: /usr/include/stdc-predef.h /usr/include/libio.h
+opts.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/string.h
+opts.o: /usr/include/xlocale.h headers/opts.h headers/general.h
+opts.o: headers/ansi.h headers/mtypes.h headers/dct.h /usr/include/malloc.h
 opts.o: /usr/include/math.h
-iframe.o: /usr/include/sys/times.h /usr/include/sys/stdsyms.h
-iframe.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-iframe.o: /usr/include/sys/param.h /usr/include/machine/param.h
-iframe.o: /usr/include/sys/sysmacros.h /usr/include/machine/param_shm.h
-iframe.o: /usr/include/sys/time.h /usr/include/sys/sigevent.h
-iframe.o: /usr/include/machine/spl.h /usr/include/sys/kern_svcs.h
-iframe.o: headers/all.h /usr/include/stdio.h /usr/include/sys/_null.h
-iframe.o: /usr/include/sys/_size_t.h /usr/include/stdlib.h
-iframe.o: /usr/include/sys/_wchar_t.h /usr/include/math.h
-iframe.o: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
-iframe.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-iframe.o: headers/general.h headers/mtypes.h headers/dct.h headers/frames.h
-iframe.o: headers/mheaders.h headers/bitio.h headers/frame.h
+iframe.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+iframe.o: /usr/include/stdc-predef.h /usr/include/libio.h
+iframe.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+iframe.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+iframe.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+iframe.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
+iframe.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+iframe.o: headers/frames.h headers/mheaders.h headers/bitio.h headers/frame.h
 iframe.o: headers/prototypes.h headers/mpeg.h headers/param.h headers/fsize.h
 iframe.o: headers/parallel.h headers/postdct.h headers/rate.h headers/opts.h
-pframe.o: /usr/include/assert.h /usr/include/sys/stdsyms.h
-pframe.o: /usr/include/sys/param.h /usr/include/sys/types.h
-pframe.o: /usr/include/sys/_inttypes.h /usr/include/machine/param.h
-pframe.o: /usr/include/sys/sysmacros.h /usr/include/machine/param_shm.h
-pframe.o: /usr/include/sys/time.h /usr/include/sys/sigevent.h
-pframe.o: /usr/include/machine/spl.h /usr/include/sys/kern_svcs.h
-pframe.o: headers/all.h /usr/include/stdio.h /usr/include/sys/_null.h
-pframe.o: /usr/include/sys/_size_t.h /usr/include/stdlib.h
-pframe.o: /usr/include/sys/_wchar_t.h /usr/include/math.h
-pframe.o: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
-pframe.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-pframe.o: headers/general.h headers/mtypes.h headers/dct.h headers/bitio.h
-pframe.o: headers/frames.h headers/mheaders.h headers/frame.h
-pframe.o: headers/prototypes.h headers/param.h headers/fsize.h
-pframe.o: headers/postdct.h headers/mpeg.h headers/parallel.h headers/rate.h
-pframe.o: headers/opts.h
-bframe.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-bframe.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-bframe.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-bframe.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-bframe.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-bframe.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-bframe.o: headers/ansi.h headers/general.h /usr/include/sys/param.h
-bframe.o: /usr/include/machine/param.h /usr/include/sys/sysmacros.h
-bframe.o: /usr/include/machine/param_shm.h /usr/include/sys/time.h
-bframe.o: /usr/include/sys/sigevent.h /usr/include/machine/spl.h
-bframe.o: /usr/include/sys/kern_svcs.h /usr/include/assert.h headers/mtypes.h
-bframe.o: headers/dct.h headers/bitio.h headers/frames.h headers/mheaders.h
-bframe.o: headers/frame.h headers/prototypes.h headers/fsize.h
-bframe.o: headers/param.h headers/postdct.h headers/rate.h headers/opts.h
-psearch.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-psearch.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-psearch.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-psearch.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-psearch.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-psearch.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-psearch.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
-psearch.o: headers/frames.h headers/mheaders.h headers/bitio.h
-psearch.o: headers/frame.h headers/search.h headers/prototypes.h
-psearch.o: headers/fsize.h headers/param.h
-bsearch.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-bsearch.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-bsearch.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-bsearch.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-bsearch.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-bsearch.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
-bsearch.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
-bsearch.o: headers/frames.h headers/mheaders.h headers/bitio.h
-bsearch.o: headers/frame.h headers/search.h headers/fsize.h
-block.o: headers/all.h /usr/include/stdio.h /usr/include/sys/stdsyms.h
-block.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-block.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h
-block.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-block.o: /usr/include/math.h /usr/include/memory.h /usr/include/string.h
-block.o: /usr/include/limits.h headers/libpnmrw.h /usr/include/malloc.h
+pframe.o: /usr/include/assert.h /usr/include/features.h
+pframe.o: /usr/include/stdc-predef.h headers/all.h /usr/include/stdio.h
+pframe.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+pframe.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+pframe.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+pframe.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+pframe.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+pframe.o: headers/mtypes.h headers/dct.h headers/bitio.h headers/frames.h
+pframe.o: headers/mheaders.h headers/frame.h headers/prototypes.h
+pframe.o: headers/param.h headers/fsize.h headers/postdct.h headers/mpeg.h
+pframe.o: headers/parallel.h headers/rate.h headers/opts.h
+bframe.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+bframe.o: /usr/include/stdc-predef.h /usr/include/libio.h
+bframe.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+bframe.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+bframe.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+bframe.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
+bframe.o: headers/ansi.h headers/general.h /usr/include/assert.h
+bframe.o: headers/mtypes.h headers/dct.h headers/bitio.h headers/frames.h
+bframe.o: headers/mheaders.h headers/frame.h headers/prototypes.h
+bframe.o: headers/fsize.h headers/param.h headers/postdct.h headers/rate.h
+bframe.o: headers/opts.h
+psearch.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+psearch.o: /usr/include/stdc-predef.h /usr/include/libio.h
+psearch.o: /usr/include/_G_config.h /usr/include/wchar.h
+psearch.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+psearch.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+psearch.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+psearch.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+psearch.o: headers/mtypes.h headers/dct.h headers/frames.h headers/mheaders.h
+psearch.o: headers/bitio.h headers/frame.h headers/search.h
+psearch.o: headers/prototypes.h headers/fsize.h headers/param.h
+bsearch.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+bsearch.o: /usr/include/stdc-predef.h /usr/include/libio.h
+bsearch.o: /usr/include/_G_config.h /usr/include/wchar.h
+bsearch.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+bsearch.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+bsearch.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+bsearch.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+bsearch.o: headers/mtypes.h headers/dct.h headers/frames.h headers/mheaders.h
+bsearch.o: headers/bitio.h headers/frame.h headers/search.h headers/fsize.h
+block.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
+block.o: /usr/include/stdc-predef.h /usr/include/libio.h
+block.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+block.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+block.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+block.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
 block.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
 block.o: headers/frames.h headers/mheaders.h headers/bitio.h headers/frame.h
 block.o: headers/prototypes.h headers/fsize.h headers/opts.h
 block.o: headers/postdct.h
-parallel.o: /usr/include/sys/types.h /usr/include/sys/stdsyms.h
-parallel.o: /usr/include/sys/_inttypes.h /usr/include/sys/socket.h
-parallel.o: /usr/include/sys/times.h /usr/include/time.h
-parallel.o: /usr/include/sys/_null.h /usr/include/sys/_time_t.h
-parallel.o: /usr/include/netinet/in.h /usr/include/unistd.h
-parallel.o: /usr/include/sys/unistd.h /usr/include/netdb.h
-parallel.o: /usr/include/stdio.h /usr/include/sys/_size_t.h
-parallel.o: /usr/include/errno.h /usr/include/sys/errno.h
-parallel.o: /usr/include/string.h /usr/include/signal.h
-parallel.o: /usr/include/sys/signal.h /usr/include/sys/sigevent.h
-parallel.o: /usr/include/sys/siginfo.h /usr/include/sys/newsig.h
-parallel.o: headers/all.h /usr/include/stdlib.h /usr/include/sys/_wchar_t.h
-parallel.o: /usr/include/math.h /usr/include/memory.h /usr/include/limits.h
-parallel.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-parallel.o: headers/general.h headers/param.h headers/mpeg.h headers/mtypes.h
-parallel.o: headers/dct.h headers/frame.h headers/prototypes.h
-parallel.o: headers/parallel.h headers/bitio.h headers/readframe.h
-parallel.o: headers/fsize.h headers/combine.h headers/frames.h
-parallel.o: headers/mheaders.h
-jpeg.o: /usr/include/stdio.h /usr/include/sys/stdsyms.h
-jpeg.o: /usr/include/sys/types.h /usr/include/sys/_inttypes.h
-jpeg.o: /usr/include/sys/_null.h /usr/include/sys/_size_t.h headers/all.h
-jpeg.o: /usr/include/stdlib.h /usr/include/sys/_wchar_t.h /usr/include/math.h
-jpeg.o: /usr/include/memory.h /usr/include/string.h /usr/include/limits.h
-jpeg.o: headers/libpnmrw.h /usr/include/malloc.h headers/ansi.h
-jpeg.o: headers/general.h headers/mtypes.h headers/dct.h headers/frames.h
-jpeg.o: headers/mheaders.h headers/bitio.h headers/frame.h
-jpeg.o: headers/prototypes.h headers/param.h headers/readframe.h
-jpeg.o: headers/fsize.h headers/rgbtoycc.h headers/jpeg.h jpeg/jpeglib.h
-jpeg.o: jpeg/jconfig.h jpeg/jmorecfg.h
-main.o: /usr/include/assert.h /usr/include/sys/stdsyms.h headers/all.h
-main.o: /usr/include/stdio.h /usr/include/sys/types.h
-main.o: /usr/include/sys/_inttypes.h /usr/include/sys/_null.h
-main.o: /usr/include/sys/_size_t.h /usr/include/stdlib.h
-main.o: /usr/include/sys/_wchar_t.h /usr/include/math.h /usr/include/memory.h
-main.o: /usr/include/string.h /usr/include/limits.h headers/libpnmrw.h
+parallel.o: /usr/include/time.h /usr/include/features.h
+parallel.o: /usr/include/stdc-predef.h /usr/include/xlocale.h
+parallel.o: /usr/include/netinet/in.h /usr/include/stdint.h
+parallel.o: /usr/include/endian.h /usr/include/unistd.h /usr/include/getopt.h
+parallel.o: /usr/include/netdb.h /usr/include/rpc/netdb.h
+parallel.o: /usr/include/errno.h /usr/include/string.h /usr/include/signal.h
+parallel.o: headers/all.h /usr/include/stdio.h /usr/include/libio.h
+parallel.o: /usr/include/_G_config.h /usr/include/wchar.h
+parallel.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+parallel.o: /usr/include/memory.h /usr/include/limits.h headers/libpnmrw.h
+parallel.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+parallel.o: headers/param.h headers/mpeg.h headers/mtypes.h headers/dct.h
+parallel.o: headers/frame.h headers/prototypes.h headers/parallel.h
+parallel.o: headers/bitio.h headers/readframe.h headers/fsize.h
+parallel.o: headers/combine.h headers/frames.h headers/mheaders.h
+jpeg.o: /usr/include/stdio.h /usr/include/features.h
+jpeg.o: /usr/include/stdc-predef.h /usr/include/libio.h
+jpeg.o: /usr/include/_G_config.h /usr/include/wchar.h headers/all.h
+jpeg.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+jpeg.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+jpeg.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
+jpeg.o: /usr/include/malloc.h headers/ansi.h headers/general.h
+jpeg.o: headers/mtypes.h headers/dct.h headers/frames.h headers/mheaders.h
+jpeg.o: headers/bitio.h headers/frame.h headers/prototypes.h headers/param.h
+jpeg.o: headers/readframe.h headers/fsize.h headers/rgbtoycc.h headers/jpeg.h
+jpeg.o: jpeg/jpeglib.h jpeg/jconfig.h jpeg/jmorecfg.h
+main.o: /usr/include/assert.h /usr/include/features.h
+main.o: /usr/include/stdc-predef.h headers/all.h /usr/include/stdio.h
+main.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+main.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
+main.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
+main.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
 main.o: /usr/include/malloc.h headers/ansi.h headers/general.h
 main.o: headers/mtypes.h headers/dct.h headers/mpeg.h headers/frame.h
 main.o: headers/search.h headers/prototypes.h headers/param.h
 main.o: headers/parallel.h headers/bitio.h headers/readframe.h
 main.o: headers/combine.h headers/frames.h headers/mheaders.h headers/jpeg.h
-main.o: headers/specifics.h headers/opts.h /usr/include/time.h
-main.o: /usr/include/sys/_time_t.h
+main.o: headers/specifics.h headers/opts.h
