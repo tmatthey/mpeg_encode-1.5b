@@ -309,7 +309,8 @@ postdct.o: headers/postdct.h headers/opts.h
 huff.o: headers/mtypes.h headers/general.h headers/dct.h headers/ansi.h
 huff.o: huff.h
 bitio.o: /usr/include/assert.h /usr/include/features.h
-bitio.o: /usr/include/stdc-predef.h headers/all.h /usr/include/stdio.h
+bitio.o: /usr/include/stdc-predef.h /usr/include/unistd.h
+bitio.o: /usr/include/getopt.h headers/all.h /usr/include/stdio.h
 bitio.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
 bitio.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
 bitio.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
@@ -459,10 +460,10 @@ rate.o: headers/prototypes.h headers/param.h headers/fsize.h
 rate.o: headers/postdct.h headers/mpeg.h headers/parallel.h headers/rate.h
 opts.o: /usr/include/stdio.h /usr/include/features.h
 opts.o: /usr/include/stdc-predef.h /usr/include/libio.h
-opts.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/string.h
-opts.o: /usr/include/xlocale.h headers/opts.h headers/general.h
-opts.o: headers/ansi.h headers/mtypes.h headers/dct.h /usr/include/malloc.h
-opts.o: /usr/include/math.h
+opts.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
+opts.o: /usr/include/alloca.h /usr/include/string.h /usr/include/xlocale.h
+opts.o: headers/opts.h headers/general.h headers/ansi.h headers/mtypes.h
+opts.o: headers/dct.h /usr/include/malloc.h /usr/include/math.h
 iframe.o: headers/all.h /usr/include/stdio.h /usr/include/features.h
 iframe.o: /usr/include/stdc-predef.h /usr/include/libio.h
 iframe.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/stdlib.h
@@ -541,15 +542,16 @@ parallel.o: headers/bitio.h headers/readframe.h headers/fsize.h
 parallel.o: headers/combine.h headers/frames.h headers/mheaders.h
 jpeg.o: /usr/include/stdio.h /usr/include/features.h
 jpeg.o: /usr/include/stdc-predef.h /usr/include/libio.h
-jpeg.o: /usr/include/_G_config.h /usr/include/wchar.h headers/all.h
-jpeg.o: /usr/include/stdlib.h /usr/include/alloca.h /usr/include/math.h
-jpeg.o: /usr/include/memory.h /usr/include/string.h /usr/include/xlocale.h
-jpeg.o: /usr/include/limits.h /usr/include/time.h headers/libpnmrw.h
-jpeg.o: /usr/include/malloc.h headers/ansi.h headers/general.h
-jpeg.o: headers/mtypes.h headers/dct.h headers/frames.h headers/mheaders.h
-jpeg.o: headers/bitio.h headers/frame.h headers/prototypes.h headers/param.h
-jpeg.o: headers/readframe.h headers/fsize.h headers/rgbtoycc.h headers/jpeg.h
-jpeg.o: jpeg/jpeglib.h jpeg/jconfig.h jpeg/jmorecfg.h
+jpeg.o: /usr/include/_G_config.h /usr/include/wchar.h /usr/include/unistd.h
+jpeg.o: /usr/include/getopt.h headers/all.h /usr/include/stdlib.h
+jpeg.o: /usr/include/alloca.h /usr/include/math.h /usr/include/memory.h
+jpeg.o: /usr/include/string.h /usr/include/xlocale.h /usr/include/limits.h
+jpeg.o: /usr/include/time.h headers/libpnmrw.h /usr/include/malloc.h
+jpeg.o: headers/ansi.h headers/general.h headers/mtypes.h headers/dct.h
+jpeg.o: headers/frames.h headers/mheaders.h headers/bitio.h headers/frame.h
+jpeg.o: headers/prototypes.h headers/param.h headers/readframe.h
+jpeg.o: headers/fsize.h headers/rgbtoycc.h headers/jpeg.h jpeg/jpeglib.h
+jpeg.o: jpeg/jconfig.h jpeg/jmorecfg.h
 main.o: /usr/include/assert.h /usr/include/features.h
 main.o: /usr/include/stdc-predef.h headers/all.h /usr/include/stdio.h
 main.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h

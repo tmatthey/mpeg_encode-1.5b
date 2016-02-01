@@ -34,7 +34,7 @@ BSEARCH_CROSS2	headers/search.h	70
 BSEARCH_EXHAUSTIVE	headers/search.h	69
 BSEARCH_SIMPLE	headers/search.h	71
 BSearchName	bsearch.c	/^BSearchName()$/
-BSkipBlocks	opts.c	82
+BSkipBlocks	opts.c	83
 B_FRAME	headers/frames.h	97
 B_FRAME_RUN	frame.c	58
 BitBucket	headers/bitio.h	98
@@ -102,7 +102,7 @@ DCTBLOCK_2D	headers/dct.h	44
 DCTELEM	headers/dct.h	42
 DCTELEM	headers/mproto.h	78
 DCTSIZE	headers/dct.h	38
-DCTSIZE2	jpeg.c	79
+DCTSIZE2	jpeg.c	80
 DCTSIZE2	headers/dct.h	41
 DCTSIZE2	headers/mproto.h	77
 DCTSIZE_SQ	headers/dct.h	39
@@ -120,7 +120,7 @@ DoBIntraCode	bframe.c	/^DoBIntraCode(current, prev, next, by, bx, mode, fm/
 DoGamma	readframe.c	/^DoGamma(mf, w, h)$/
 DoIntraCode	pframe.c	/^DoIntraCode(currentBlock, prev, by, bx, motionY, m/
 DoKillDim	readframe.c	/^DoKillDim(mf, w, h)$/
-DoLaplace	opts.c	79
+DoLaplace	opts.c	80
 DoQuant	headers/frames.h	/^#define DoQuant(bit, src, dest)                   /
 Dump	bitio.c	/^Dump(bbPtr)$/
 EIGHT_BIT_SAMPLES	mfwddct.c	46
@@ -242,7 +242,7 @@ GetRemoteFrame	parallel.c	/^  GetRemoteFrame(frame, frameNumber)$/
 GetUnusedFrame	frame.c	/^GetUnusedFrame()$/
 HASH_SIZE	libpnmrw.c	1107
 HAVE_BOOLEAN	headers/general.h	121
-HEADER_SIZE	jpeg.c	83
+HEADER_SIZE	jpeg.c	84
 HUFF_MAXLEVEL	headers/huff.h	30
 HUFF_MAXRUN	headers/huff.h	29
 INPUT_ENTRY_BLOCK_SIZE	param.c	188
@@ -252,7 +252,7 @@ I_FRAME	headers/frames.h	95
 IncrementTCTime	mpeg.c	/^IncrementTCTime()$/
 InputFileEntry	param.c	243
 InputFileEntryStruct	param.c	233
-IntraPBAllowed	opts.c	74
+IntraPBAllowed	opts.c	75
 JM2JPEG	param.c	/^JM2JPEG()$/
 JMOVIE_FILE_TYPE	headers/readframe.h	64
 JMovie2JPEG	jpeg.c	/^  JMovie2JPEG(infilename,obase,start,end)$/
@@ -260,18 +260,18 @@ JPEG_FILE_TYPE	headers/readframe.h	63
 Kb	rate.c	131
 Ki	rate.c	129
 Kp	rate.c	130
-L1	opts.c	80
-L2	opts.c	80
+L1	opts.c	81
+L2	opts.c	81
 LAST_OPTION	param.c	207
 LG2_DCT_SCALE	mfwddct.c	48
 LG2_DCT_SCALE	mfwddct.c	50
 LG2_OVERSCALE	mfwddct.c	60
 LOCAL_DCT	headers/opts.h	80
 LUM_BLOCK	headers/frames.h	99
-Lambdas	opts.c	80
-LaplaceCnum	opts.c	81
-LaplaceNum	opts.c	81
-LocalDCTRateScale	opts.c	73
+Lambdas	opts.c	81
+LaplaceCnum	opts.c	82
+LaplaceNum	opts.c	82
+LocalDCTRateScale	opts.c	74
 LumAddMotionError	block.c	/^LumAddMotionError(currentBlock, blockSoFar, prevFr/
 LumBlock	headers/mtypes.h	101
 LumBlockMAD	block.c	/^LumBlockMAD(currentBlock, motionBlock, bestSoFar)$/
@@ -303,9 +303,9 @@ MOTION_BACKWARD	headers/frames.h	105
 MOTION_FORWARD	headers/frames.h	104
 MOTION_INTERPOLATE	headers/frames.h	106
 MOTION_TO_FRAME_COORD	headers/frames.h	/^#define MOTION_TO_FRAME_COORD(bx1, bx2, mx1, mx2, /
-MPOST_NON_ZERO	headers/postdct.h	39
-MPOST_OVERFLOW	headers/postdct.h	40
-MPOST_ZERO	headers/postdct.h	38
+MPOST_NON_ZERO	headers/postdct.h	40
+MPOST_OVERFLOW	headers/postdct.h	41
+MPOST_ZERO	headers/postdct.h	39
 MTYPES_INCLUDED	headers/mtypes.h	69
 MULTIPLY	jrevdct.c	/^#define MULTIPLY(var,const)  (((INT16) (var)) * ((/
 MULTIPLY	jrevdct.c	/^#define MULTIPLY(var,const)  (((INT16) (var)) * ((/
@@ -528,7 +528,7 @@ SafeRead	parallel.c	/^  SafeRead(fd, buf, nbyte)$/
 SafeWrite	parallel.c	/^  SafeWrite(fd, buf, nbyte)$/
 Sb	rate.c	96
 ScanNextString	readframe.c	/^ScanNextString(inputLine, string)$/
-SearchCompareMode	opts.c	70
+SearchCompareMode	opts.c	71
 SendDecodedFrame	parallel.c	/^  SendDecodedFrame(frame)$/
 SendRemoteFrame	parallel.c	/^SendRemoteFrame(frameNumber, bb)$/
 SeparateLine	readframe.c	/^SeparateLine(fpointer, lineptr, width)$/
@@ -578,8 +578,8 @@ Sp	rate.c	96
 SpecLookup	specifics.c	/^int SpecLookup(fn,typ,num,info,start_qs)$/
 SpecTypeLookup	specifics.c	/^int SpecTypeLookup(fn)$/
 Specifics_Init	specifics.c	/^void Specifics_Init()$/
-SquashMaxChr	opts.c	72
-SquashMaxLum	opts.c	72
+SquashMaxChr	opts.c	73
+SquashMaxLum	opts.c	73
 StartCombineServer	parallel.c	/^  StartCombineServer(numInputFiles, outputFileName/
 StartDecodeServer	parallel.c	/^  StartDecodeServer(numInputFiles, decodeFileName,/
 StartIOServer	parallel.c	/^  StartIOServer(numInputFiles, parallelHostName, p/
@@ -623,7 +623,7 @@ WORDS_PER_BUCKET	headers/bitio.h	75
 WaitForDecodedFrame	parallel.c	/^  WaitForDecodedFrame(id)$/
 WaitForOutputFile	parallel.c	/^  WaitForOutputFile(number)$/
 WriteDecodedFrame	iframe.c	/^WriteDecodedFrame(frame)$/
-WriteDistortionNumbers	opts.c	75
+WriteDistortionNumbers	opts.c	76
 Xb	rate.c	94
 Xi	rate.c	94
 Xp	rate.c	94
@@ -658,7 +658,7 @@ bits	headers/bitio.h	87
 bitsWritten	headers/bitio.h	94
 bitsleft	headers/bitio.h	88
 bitsleftcur	headers/bitio.h	88
-block_bound	opts.c	63
+block_bound	opts.c	64
 blocksPerSlice	iframe.c	216
 bmotionX	headers/frames.h	155
 bmotionY	headers/frames.h	155
@@ -678,10 +678,10 @@ checkBufferFullness	rate.c	/^void checkBufferFullness (oldQScale)$/
 checkSpatialActivity	rate.c	/^void checkSpatialActivity(blk0, blk1, blk2, blk3)$/
 childProcess	main.c	150
 cleanup_fork	parallel.c	/^void cleanup_fork( dummy )			\/* try to kill all ch/
-collect_distortion_detailed	opts.c	76
-collect_quant	opts.c	64
-collect_quant_detailed	opts.c	65
-collect_quant_fp	opts.c	66
+collect_distortion_detailed	opts.c	77
+collect_quant	opts.c	65
+collect_quant_detailed	opts.c	66
+collect_quant_fp	opts.c	67
 color	headers/libpnmrw.h	150
 colorhash_table	headers/libpnmrw.h	161
 colorhist_item	headers/libpnmrw.h	148
@@ -753,7 +753,7 @@ detalmv_def	headers/mtypes.h	123
 determineMBCount	rate.c	/^  determineMBCount ()$/
 diffTime	mpeg.c	172
 diffTime	parallel.c	117
-distortion_fp	opts.c	77
+distortion_fp	opts.c	78
 encoder_name	main.c	165
 endID	param.c	238
 executable	param.c	278
@@ -768,8 +768,8 @@ fmotionX	headers/frames.h	155
 fmotionY	headers/frames.h	155
 forceEncodeLast	frametype.c	59
 forceIalign	parallel.c	144
-fp_table_dist	opts.c	78
-fp_table_rate	opts.c	78
+fp_table_dist	opts.c	79
+fp_table_rate	opts.c	79
 frameDelayIncrement	rate.c	91
 frameDone	parallel.c	120
 frameEnd	main.c	141
@@ -898,10 +898,10 @@ ioConversion	param.c	266
 ioPortNumber	parallel.c	140
 ioServer	main.c	151
 itrans_coef	jrevdct.c	1227
-kill_dim	opts.c	67
-kill_dim_break	opts.c	68
-kill_dim_end	opts.c	68
-kill_dim_slope	opts.c	69
+kill_dim	opts.c	68
+kill_dim_break	opts.c	69
+kill_dim_end	opts.c	69
+kill_dim_slope	opts.c	70
 lastFrameVirtBuf	rate.c	142
 lastGOPStart	mheaders.c	121
 lastIFrame	iframe.c	165
@@ -910,7 +910,7 @@ lastPtr	headers/bitio.h	97
 lastQSSet	mheaders.c	122
 left	param.c	234
 lengths	iframe.c	174
-lower_mask	bitio.c	100
+lower_mask	bitio.c	101
 machineName	param.c	276
 machineNumber	parallel.c	145
 max	headers/general.h	145
@@ -1142,7 +1142,7 @@ slicesPerFrame	iframe.c	215
 specificsDefines	param.c	269
 specificsFile	param.c	269
 specificsOn	param.c	273
-squash_small_differences	opts.c	71
+squash_small_differences	opts.c	72
 startID	param.c	237
 statFile	mpeg.c	199
 statFileName	mpeg.c	196
@@ -1170,7 +1170,7 @@ totalTime	bframe.c	144
 total_act_j	rate.c	155
 totalbits	headers/bitio.h	92
 trans_coef	mfwddct.c	327
-tuneingOn	opts.c	62
+tuneingOn	opts.c	63
 typ	headers/frames.h	132
 typ	headers/mtypes.h	124
 type	headers/frame.h	55

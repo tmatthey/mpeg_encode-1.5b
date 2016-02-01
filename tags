@@ -18,7 +18,7 @@ BMotionSearchNoInterp	bsearch.c	/^BMotionSearchNoInterp(currentBlock, prev, next
 BMotionSearchSimple	bsearch.c	/^BMotionSearchSimple(currentBlock, prev, next, by, /
 BSD	libpnmrw.c	27
 BSearchName	bsearch.c	/^BSearchName()$/
-BSkipBlocks	opts.c	82
+BSkipBlocks	opts.c	83
 B_FRAME_RUN	frame.c	58
 Bitio_BytePad	bitio.c	/^Bitio_BytePad(bbPtr)$/
 Bitio_Flush	bitio.c	/^Bitio_Flush(bbPtr)$/
@@ -63,7 +63,7 @@ ConnectToSocket	parallel.c	/^  ConnectToSocket(machineName, portNum, hostEnt)$/
 CreateListeningSocket	parallel.c	/^  CreateListeningSocket(portNumber)$/
 CurrFile	readframe.c	175
 CvtType	specifics.c	/^#define CvtType(x) ReallyCvt(my_upper(x))$/
-DCTSIZE2	jpeg.c	79
+DCTSIZE2	jpeg.c	80
 DCT_SCALE	mfwddct.c	55
 DEFAULT_BUFFER_SIZE	rate.c	73
 DEFAULT_PICT_RATE	rate.c	76
@@ -74,7 +74,7 @@ DoBIntraCode	bframe.c	/^DoBIntraCode(current, prev, next, by, bx, mode, fm/
 DoGamma	readframe.c	/^DoGamma(mf, w, h)$/
 DoIntraCode	pframe.c	/^DoIntraCode(currentBlock, prev, by, bx, motionY, m/
 DoKillDim	readframe.c	/^DoKillDim(mf, w, h)$/
-DoLaplace	opts.c	79
+DoLaplace	opts.c	80
 Dump	bitio.c	/^Dump(bbPtr)$/
 EIGHT_BIT_SAMPLES	mfwddct.c	46
 EXT_START_CODE	mheaders.c	267
@@ -174,29 +174,29 @@ GetRemoteDecodedRefFrame	parallel.c	/^  GetRemoteDecodedRefFrame(frame, frameNum
 GetRemoteFrame	parallel.c	/^  GetRemoteFrame(frame, frameNumber)$/
 GetUnusedFrame	frame.c	/^GetUnusedFrame()$/
 HASH_SIZE	libpnmrw.c	1107
-HEADER_SIZE	jpeg.c	83
+HEADER_SIZE	jpeg.c	84
 INPUT_ENTRY_BLOCK_SIZE	param.c	188
 IOhostName	parallel.c	139
 IOtime	parallel.c	148
 IncrementTCTime	mpeg.c	/^IncrementTCTime()$/
 InputFileEntry	param.c	243
 InputFileEntryStruct	param.c	233
-IntraPBAllowed	opts.c	74
+IntraPBAllowed	opts.c	75
 JM2JPEG	param.c	/^JM2JPEG()$/
 JMovie2JPEG	jpeg.c	/^  JMovie2JPEG(infilename,obase,start,end)$/
 Kb	rate.c	131
 Ki	rate.c	129
 Kp	rate.c	130
-L1	opts.c	80
-L2	opts.c	80
+L1	opts.c	81
+L2	opts.c	81
 LAST_OPTION	param.c	207
 LG2_DCT_SCALE	mfwddct.c	48
 LG2_DCT_SCALE	mfwddct.c	50
 LG2_OVERSCALE	mfwddct.c	60
-Lambdas	opts.c	80
-LaplaceCnum	opts.c	81
-LaplaceNum	opts.c	81
-LocalDCTRateScale	opts.c	73
+Lambdas	opts.c	81
+LaplaceCnum	opts.c	82
+LaplaceNum	opts.c	82
+LocalDCTRateScale	opts.c	74
 LumAddMotionError	block.c	/^LumAddMotionError(currentBlock, blockSoFar, prevFr/
 LumBlockMAD	block.c	/^LumBlockMAD(currentBlock, motionBlock, bestSoFar)$/
 LumMotionError	block.c	/^LumMotionError(currentBlock, prevFrame, by, bx, my/
@@ -373,7 +373,7 @@ SafeRead	parallel.c	/^  SafeRead(fd, buf, nbyte)$/
 SafeWrite	parallel.c	/^  SafeWrite(fd, buf, nbyte)$/
 Sb	rate.c	96
 ScanNextString	readframe.c	/^ScanNextString(inputLine, string)$/
-SearchCompareMode	opts.c	70
+SearchCompareMode	opts.c	71
 SendDecodedFrame	parallel.c	/^  SendDecodedFrame(frame)$/
 SendRemoteFrame	parallel.c	/^SendRemoteFrame(frameNumber, bb)$/
 SeparateLine	readframe.c	/^SeparateLine(fpointer, lineptr, width)$/
@@ -422,8 +422,8 @@ Sp	rate.c	96
 SpecLookup	specifics.c	/^int SpecLookup(fn,typ,num,info,start_qs)$/
 SpecTypeLookup	specifics.c	/^int SpecTypeLookup(fn)$/
 Specifics_Init	specifics.c	/^void Specifics_Init()$/
-SquashMaxChr	opts.c	72
-SquashMaxLum	opts.c	72
+SquashMaxChr	opts.c	73
+SquashMaxLum	opts.c	73
 StartCombineServer	parallel.c	/^  StartCombineServer(numInputFiles, outputFileName/
 StartDecodeServer	parallel.c	/^  StartDecodeServer(numInputFiles, decodeFileName,/
 StartIOServer	parallel.c	/^  StartIOServer(numInputFiles, parallelHostName, p/
@@ -449,7 +449,7 @@ VidRateNum	mheaders.c	277
 WaitForDecodedFrame	parallel.c	/^  WaitForDecodedFrame(id)$/
 WaitForOutputFile	parallel.c	/^  WaitForOutputFile(number)$/
 WriteDecodedFrame	iframe.c	/^WriteDecodedFrame(frame)$/
-WriteDistortionNumbers	opts.c	75
+WriteDistortionNumbers	opts.c	76
 Xb	rate.c	94
 Xi	rate.c	94
 Xp	rate.c	94
@@ -467,7 +467,7 @@ bitRateFile	mpeg.c	200
 bitRateFileName	mpeg.c	197
 bit_rate	mpeg.c	214
 bit_rate	rate.c	84
-block_bound	opts.c	63
+block_bound	opts.c	64
 blocksPerSlice	iframe.c	216
 bsearchAlg	bsearch.c	89
 buf_size	mpeg.c	214
@@ -478,10 +478,10 @@ checkBufferFullness	rate.c	/^void checkBufferFullness (oldQScale)$/
 checkSpatialActivity	rate.c	/^void checkSpatialActivity(blk0, blk1, blk2, blk3)$/
 childProcess	main.c	150
 cleanup_fork	parallel.c	/^void cleanup_fork( dummy )			\/* try to kill all ch/
-collect_distortion_detailed	opts.c	76
-collect_quant	opts.c	64
-collect_quant_detailed	opts.c	65
-collect_quant_fp	opts.c	66
+collect_distortion_detailed	opts.c	77
+collect_quant	opts.c	65
+collect_quant_detailed	opts.c	66
+collect_quant_fp	opts.c	67
 combinePortNumber	parallel.c	141
 computeMVHist	main.c	160
 cr	readframe.c	154
@@ -535,7 +535,7 @@ decodeServerSocket	parallel.c	122
 determineMBCount	rate.c	/^  determineMBCount ()$/
 diffTime	mpeg.c	172
 diffTime	parallel.c	117
-distortion_fp	opts.c	77
+distortion_fp	opts.c	78
 encoder_name	main.c	165
 endID	param.c	238
 executable	param.c	278
@@ -546,8 +546,8 @@ fileType	readframe.c	150
 firstI	frametype.c	53
 forceEncodeLast	frametype.c	59
 forceIalign	parallel.c	144
-fp_table_dist	opts.c	78
-fp_table_rate	opts.c	78
+fp_table_dist	opts.c	79
+fp_table_rate	opts.c	79
 frameDelayIncrement	rate.c	91
 frameDone	parallel.c	120
 frameEnd	main.c	141
@@ -650,10 +650,10 @@ ioConversion	param.c	266
 ioPortNumber	parallel.c	140
 ioServer	main.c	151
 itrans_coef	jrevdct.c	1227
-kill_dim	opts.c	67
-kill_dim_break	opts.c	68
-kill_dim_end	opts.c	68
-kill_dim_slope	opts.c	69
+kill_dim	opts.c	68
+kill_dim_break	opts.c	69
+kill_dim_end	opts.c	69
+kill_dim_slope	opts.c	70
 lastFrameVirtBuf	rate.c	142
 lastGOPStart	mheaders.c	121
 lastIFrame	iframe.c	165
@@ -661,7 +661,7 @@ lastNumBits	iframe.c	164
 lastQSSet	mheaders.c	122
 left	param.c	234
 lengths	iframe.c	174
-lower_mask	bitio.c	100
+lower_mask	bitio.c	101
 machineName	param.c	276
 machineNumber	parallel.c	145
 maxInputFileEntries	param.c	252
@@ -847,7 +847,7 @@ slicesPerFrame	iframe.c	215
 specificsDefines	param.c	269
 specificsFile	param.c	269
 specificsOn	param.c	273
-squash_small_differences	opts.c	71
+squash_small_differences	opts.c	72
 startID	param.c	237
 statFile	mpeg.c	199
 statFileName	mpeg.c	196
@@ -874,7 +874,7 @@ totalTime	pframe.c	156
 totalTime	bframe.c	144
 total_act_j	rate.c	155
 trans_coef	mfwddct.c	327
-tuneingOn	opts.c	62
+tuneingOn	opts.c	63
 updateRateControl	rate.c	/^  updateRateControl(type)$/
 updateVBVBuffer	rate.c	/^void updateVBVBuffer (frameBits)$/
 use_cache	frametype.c	52

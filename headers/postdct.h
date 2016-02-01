@@ -34,6 +34,7 @@ void	Mpost_UnQuantZigBlock _ANSI_ARGS_((FlatBlock in, Block out,
 					   int qscale, boolean iblock));
 void	Mpost_RLEHuffIBlock _ANSI_ARGS_((FlatBlock in, BitBucket *out));
 void	Mpost_RLEHuffPBlock _ANSI_ARGS_((FlatBlock in, BitBucket *out));
+void    Mpost_UnQuantZigBlockLaplace _ANSI_ARGS_((FlatBlock in, Block out, int qscale, boolean iblock));
 
 #define MPOST_ZERO 0
 #define MPOST_NON_ZERO 1

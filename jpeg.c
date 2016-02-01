@@ -65,6 +65,7 @@
  *==============*/
 
 #include <stdio.h>
+#include <unistd.h>
 #include "all.h"
 #include "mtypes.h"
 #include "frames.h"
